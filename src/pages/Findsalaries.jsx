@@ -1,18 +1,28 @@
-import React from "react";
+import React,{useEffect} from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Banner from "../components/Banner";
+import { useNavigate } from "react-router-dom";
 import Toppaying from "../components/Toppaying";
 import FrequentlySearchedCareers from "../components/FrequentlySearchedCareers";
 const Findsalaries = () => {
+const navigate = useNavigate();
+  const user = localStorage.getItem('user');
+
+  useEffect(()=>{
+if(!user){
+  navigate("/signup");
+}
+  })
+
   return (
-    <div>
+    <div >
       <Navbar />
 
       <Banner
         heading="Find a career you will love"
         subtitle="Explore which careers have the highest job satisfaction, best salaries, and more
-"
+"   className="w-full"
       />
       <div className=" w-screen  flex justify-center  h-44 items-center">
         <div className="flex w-[800px]   items-center border border-gray-300 rounded-md p-2">

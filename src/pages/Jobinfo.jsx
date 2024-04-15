@@ -1,8 +1,17 @@
-import React from "react";
+import React,{useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Banner from "../components/Banner";
 import Footer from "../components/Footer";
 const Jobinfo = () => {
+  const navigate = useNavigate();
+  const user = localStorage.getItem("user");
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/signup");
+    }
+  }, []);
   return (
     <div>
       <Navbar />
@@ -12,13 +21,18 @@ const Jobinfo = () => {
         <h1 className="w-[600px] mb-5 text-4xl ">Salaries</h1>
         <h5 className=" text-left w-[600px] mb-5">
           Home <span>Web developer</span> <span>Salaries</span>
-        </h5 >
-        <h1 className="w-[600px] mb-4 text-3xl" >Web delveloper salary in Ghana</h1>
+        </h5>
+        <h1 className="w-[600px] mb-4 text-3xl">
+          Web delveloper salary in Ghana
+        </h1>
 
-        <h3 className="w-[600px] mb-9 text-slate-400"> How much does a Web developer salary in Ghana</h3>
+        <h3 className="w-[600px] mb-9 text-slate-400">
+          {" "}
+          How much does a Web developer salary in Ghana
+        </h3>
 
-        <div className="flex w-[593px] h-[234px] items-center bg-slate-100 justify-around" >
-          <div className="flex  flex-col  " >
+        <div className="flex w-[593px] h-[234px] items-center bg-slate-100 justify-around">
+          <div className="flex  flex-col  ">
             <h1 className="mb-7  -mt-10">Average Base Salary</h1>
             <div className=" flex justfiy-around items-center ">
               <h1>$34,677</h1>
@@ -39,7 +53,9 @@ const Jobinfo = () => {
                 <h1>$74,677</h1>
               </div>
             </div>
-            <button className="w-[184px] ml-10 h-[30px] bg-button text-white rounded-lg mt-5">Apply now</button>
+            <button className="w-[184px] ml-10 h-[30px] bg-button text-white rounded-lg mt-5">
+              Apply now
+            </button>
           </div>
         </div>
       </div>

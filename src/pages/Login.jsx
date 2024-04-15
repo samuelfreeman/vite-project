@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import instance from "../api/Test";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import useSignIn from "react-auth-kit/hooks/useSignIn";
+
+
 const Login = () => {
-  const signIn = useSignIn();
+  const user = localStorage.getItem("user");
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, []);
 
   const navigate = useNavigate();
   const formik = useFormik({
@@ -16,28 +22,27 @@ const Login = () => {
       password: "",
     },
     onSubmit: async (values) => {
+      
       try {
-        const response = await instance.post("/api/user/login", values);
-        if (response.status === 200) {
-          const authData = {
-            auth: {
-              token: response.data.token,
-              type: "Bearer",
-              expiresIn: 3000,
-              userState:{
-               id:response.data.user.id 
-              }
-            },
-          };
-
-          if (signIn(authData)) {
-            navigate("/findsalaries");
-            console.log(response.data);
+        if (values.email === "") {
+          console.log("Please enter something god dammit!");
+          throw new Error("Please enter your email!");
+        } else {
+          const response = await instance.post("/api/user/login", values);
+          if (response.status === 200) {
+            localStorage.setItem("user", JSON.stringify(response.data.user));
+            toast.success("User  logged in successfully!", {
+              position: "top-right",
+              autoClose: 1000,
+              hideProgressBar: false,
+              onClose: () => navigate("/"),
+            });
+            console.log(response);
           }
         }
       } catch (error) {
         console.error(error);
-        toast.error(error.message, {
+        toast.error(error.response.data.message || error.message, {
           position: "top-right",
           autoClose: 2000,
           hideProgressBar: false,

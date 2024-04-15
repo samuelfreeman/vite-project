@@ -1,26 +1,32 @@
-import React from "react";
-import { useFormik, ErrorMessage } from "formik";
+import React, { useEffect } from "react";
+import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import instance from "../api/Test";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// import * as Yup from "yup";
 
-import * as Yup from "yup";
-
-const SignupSchema = Yup.object().shape({
-  fullname: Yup.string()
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
-    .required("Required"),
-  email: Yup.string().email("Invalid email").required("Required"),
-  password: Yup.string()
-    .min(8, "Too Short!")
-    .max(50, "Too Long!")
-    .required("Required"),
-});
+// const SignupSchema = Yup.object().shape({
+//   fullname: Yup.string()
+//     .min(2, "Too Short!")
+//     .max(50, "Too Long!")
+//     .required("Required"),
+//   email: Yup.string().email("Invalid email").required("Required"),
+//   password: Yup.string()
+//     .min(8, "Too Short!")
+//     .max(50, "Too Long!")
+//     .required("Required"),
+// });
 
 const Signup = () => {
+  const user = localStorage.getItem("user");
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, []);
+
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -32,14 +38,17 @@ const Signup = () => {
     onSubmit: async (values) => {
       try {
         const response = await instance.post("/api/user/signup", values);
-        console.log(response.data);
-        
-        toast.success("User signed up successfully!", {
-          position: "top-right",
-          autoClose: 1000,
-          hideProgressBar: false,
-          onClose: () => navigate("/findsalaries"),
-        });
+        if (response.status === 201) {
+          localStorage.setItem("user", JSON.stringify(response.data.user));
+
+          toast.success("User signed up successfully!", {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            onClose: () => navigate("/findsalaries"),
+          });
+          console.log(response.data);
+        }
       } catch (error) {
         console.error(error.response.data.message);
         toast.error(error.response.data.message, {
