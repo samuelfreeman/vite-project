@@ -22,12 +22,12 @@ const PorpularSearches = () => {
       {loading && <div> Loading...</div>}
       {!loading && (
         <div>
-          <div className="text-left p-2 border">
-            <h1 className="">Sample Text</h1>
+          <div className="text-left p-2 border  rounded-md">
+            <h1 className="">Porpular searches </h1>
           </div>
-          <div className=" grid grid-cols-4 gap-3">
+          <div className=" grid grid-cols-4 grid-flow-rowgap-3">
             {jobs.map((job) => (
-              <div key={job.id} className="p-2 border">
+              <div key={job.id} className="border rounded-md">
                 {job.title}
               </div>
             ))}

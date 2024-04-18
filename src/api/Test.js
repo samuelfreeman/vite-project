@@ -10,11 +10,23 @@ const instance = axios.create({
     "Access-Control-Allow-Headers":
       "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
     Authorization: "",
-
   },
-
-  
 });
+
+instance.interceptors.request.use(
+  (config) => {
+    const authToken = localStorage.getItem("authToken");
+    console.log(authToken);
+    if (authToken) {
+      config.headers.Authorization = `Bearer ${authToken}`;
+    }
+    return config;
+  },
+  (error) => {
+    console.log(error.message);
+    return Promise.reject(error);
+  }
+);
 
 const addJobs = async () => {
   try {
@@ -75,6 +87,4 @@ const sendRequests = async () => {
   }
 };
 
-
-
-export default instance
+export default instance;

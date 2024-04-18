@@ -8,7 +8,7 @@ import FrequentlySearchedCareers from "../components/FrequentlySearchedCareers";
 const Findsalaries = () => {
 const navigate = useNavigate();
   const user = localStorage.getItem('user');
-
+   console.log(user)
   useEffect(()=>{
 if(!user){
   navigate("/signup");

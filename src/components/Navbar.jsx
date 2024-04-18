@@ -30,7 +30,7 @@ const Navbar = () => {
   const isHomePage = location.pathname === "/";
 
   return (
-    <div className="sticky top-0 z-50">
+    <div className="sticky  top-0 z-50">
       <nav className="flex justify-between w-screen h-20 bg-white border-b-4">
         <div className="flex justify-between items-center">
           <label htmlFor="Job Hub">

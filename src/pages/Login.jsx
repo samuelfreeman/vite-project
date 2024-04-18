@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const user = localStorage.getItem("user");
+  
   useEffect(() => {
     if (user) {
       navigate("/");
@@ -31,6 +32,7 @@ const Login = () => {
           const response = await instance.post("/api/user/login", values);
           if (response.status === 200) {
             localStorage.setItem("user", JSON.stringify(response.data.user));
+            localStorage.setItem("authToken",JSON.stringify(response.data.accessToken))
             toast.success("User  logged in successfully!", {
               position: "top-right",
               autoClose: 1000,
