@@ -7,7 +7,7 @@ const Toppaying = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate(); // Get history object for redirection
   const { jobs, loading, error } = useSelector((state) => state.jobs);
-
+  console.log(jobs);
   useEffect(() => {
     dispatch(fetchJobs());
   }, [dispatch]);
@@ -26,10 +26,12 @@ const Toppaying = () => {
   if (error) {
     return <div className=" w-[700px] h-[30vh]">Error: {error}</div>;
   }
-
+  if (!jobs) {
+    return <div className="w-[700px] h-[30vh]">No Jobs found</div>;
+  }
   return (
     <div className="container mx-auto px-4 w-[900px] ">
-      <h1 className="text-2xl font-bold mb-4">
+      <h1 className="text-4xl font-bold mb-8 text-center">
         Browse top paying jobs from industry
       </h1>
       <div className="grid w-[950px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

@@ -32,12 +32,12 @@ const ApplicationStatus = () => {
   }
 
   return (
-    <div className="flex justify-start mt-28 mb-32 items-center h-[70vh]">
+    <div className="flex justify-start mt-28 mb-32 items-center ">
       <div className="flex items-center w-screen justify-evenly">
         <div className="p-4 text-4xl font-black">
           <h1>My Jobs</h1>
           {appliedJobs.appliedJobs.map((appliedJob) => (
-            <div key={appliedJob.id} className="p-4">
+            <div key={appliedJob.id} className="p-4 ">
               <h2 className="text-2xl mt-10">{appliedJob.job.title}</h2>
             </div>
           ))}
@@ -45,7 +45,7 @@ const ApplicationStatus = () => {
         <div className="p-4   text-4xl font-black">
           <h1>Application Status</h1>
           {appliedJobs.appliedJobs.map((appliedJob) => (
-            <div key={appliedJob.id} className="p-4 mt-10 text-center">
+            <div key={appliedJob.id} className="p-4 mt-8 text-center">
               <h8
                 className={`border border-gray-500 w-20 text-sm  p-3 rounded-md text-center ${
                   appliedJob.status === "Submitted"

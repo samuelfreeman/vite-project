@@ -31,7 +31,7 @@ const Navbar = () => {
 
   return (
     <div className="sticky  top-0 z-50">
-      <nav className="flex justify-between w-screen h-20 bg-white border-b-4">
+      <nav className="flex justify-between w-full h-20 bg-white border-b-4">
         <div className="flex justify-between items-center">
           <label htmlFor="Job Hub">
             <h1 className="ml-10 text-3xl font-black text-button">Job Hub</h1>

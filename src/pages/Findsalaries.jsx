@@ -24,7 +24,7 @@ if(!user){
         subtitle="Explore which careers have the highest job satisfaction, best salaries, and more
 "   className="w-full"
       />
-      <div className=" w-screen  flex justify-center  h-44 items-center">
+      {/* <div className=" w-screen  flex justify-center  h-44 items-center">
         <div className="flex w-[800px]   items-center border border-gray-300 rounded-md p-2">
           <svg
             className="w-28 h-5 mr-2 text-black"
@@ -43,11 +43,11 @@ if(!user){
             placeholder="Job title, keywords, or company"
             className="outline-none focus:outline-none w-full"
             onChange={(e) => onChange(e.target.value)}
-          />
-        </div>
-      </div>
+          /> 
+        </div> 
+      </div> */}
 
-      <div className="h-[95vh] w-screen">
+      <div className="h-[95vh] mt-32 w-full">
         <Toppaying />
       </div>
 
