@@ -19,10 +19,29 @@ const Jobinfo = () => {
     if (!user) {
       navigate("/signup");
     } else if (jobID) {
-      dispatch(getSingleJob(jobID));
+      
+        dispatch(getSingleJob(jobID));
+      
     }
   }, [dispatch, navigate, user, jobID]);
 
+  if (loading) {
+    return (
+      <div>
+        <Navbar />
+        <div>Loading...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div>
+        <Navbar />
+        <div>Error: {error}</div>
+      </div>
+    );
+  }
   const handleApply = () => {
     if (user && jobID) {
       const userdata = JSON.parse(user);
@@ -46,7 +65,6 @@ const Jobinfo = () => {
         });
     }
   };
-
   return (
     <div>
       <Navbar />

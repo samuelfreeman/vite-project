@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 const Home = () => {
   return (
     <div className="bg-white">
-      <Navbar />
+      <Navbar  />
       <div className="container mx-auto px-4">
         <Hero />
         <PopularSearches />

@@ -9,8 +9,10 @@ const Toppaying = () => {
   const { jobs, loading, error } = useSelector((state) => state.jobs);
   console.log(jobs);
   useEffect(() => {
-    dispatch(fetchJobs());
-  }, [dispatch]);
+    if (jobs.length ==0) {
+      dispatch(fetchJobs());
+    }
+  }, [dispatch, jobs]);
 
   const handleClick = (jobId) => {
     // Store job ID in localStorage
@@ -35,7 +37,7 @@ const Toppaying = () => {
         Browse top paying jobs from industry
       </h1>
       <div className="grid w-[950px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {jobs.map((job) => (
+        {jobs?.map((job) => (
           <button key={job.id} onClick={() => handleClick(job.id)}>
             <div className="bg-white shadow-md rounded-md p-4">
               <h2 className="text-xl font-semibold mb-2">{job.title}</h2>

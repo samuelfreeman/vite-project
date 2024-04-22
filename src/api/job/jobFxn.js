@@ -8,6 +8,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 export const fetchJobs = createAsyncThunk("jobs/fetchJobs", async () => {
   try {
     const response = await instance.get("/api/job");
+    console.log(response)
     return response.data.jobs;
   } catch (error) {
     console.log(error);

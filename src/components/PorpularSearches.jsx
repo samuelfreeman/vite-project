@@ -1,18 +1,20 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchJobs } from "../api/job/jobFxn";
+
 const PorpularSearches = () => {
   const dispatch = useDispatch();
-
   const { jobs, loading, error } = useSelector((state) => state.jobs);
+console.log(jobs)
 
   useEffect(() => {
-    dispatch(fetchJobs());
-  }, [dispatch]);
+    // Fetch jobs only if they haven't been fetched before
+    if (jobs.length === 0) {
+      dispatch(fetchJobs());
+    }
+  }, [dispatch, jobs]); // Add jobs to dependency array
 
-  if (loading) {
-    return <div className="w-[700px] p-8 text-center h-[40vh]">Loading...</div>;
-  }
+
   if (error) {
     return <div className=" w-[700px] h-[30vh]">Error: {error}</div>;
   }
@@ -23,7 +25,7 @@ const PorpularSearches = () => {
       {!loading && (
         <div>
           <div className="text-left border text-2xl  rounded-md">
-            <h1 className="">Porpular searches </h1>
+            <h1 className="">Porpular searches</h1>
           </div>
           <div className=" grid grid-cols-4 grid-flow-row ">
             {jobs.map((job) => (

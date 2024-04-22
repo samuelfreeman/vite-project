@@ -2,22 +2,17 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import bell from "../assets/bell.png";
+import Popup from "./Popup";
 import user from "../assets/user.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const handleClick = () => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      localStorage.removeItem("user");
-      navigate("/signup");
-    }
-  };
   const location = useLocation();
   const [showSignup, setShowUp] = useState(true);
-
   const [showProfile, setProfile] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const userData = JSON.parse(localStorage.getItem("user"));
+
   useEffect(() => {
     const user = localStorage.getItem("user");
     if (user) {
@@ -26,8 +21,20 @@ const Navbar = () => {
     }
   }, []);
 
-  // Check if the current pathname is the home page
+  const handleClick = () => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      localStorage.removeItem("user");
+      navigate("/signup");
+    }
+  };
+
+  const togglePopup = () => {
+    setIsPopupOpen(!isPopupOpen);
+  };
+
   const isHomePage = location.pathname === "/";
+
 
   return (
     <div className="sticky  top-0 z-50">
@@ -55,7 +62,7 @@ const Navbar = () => {
                   isActive ? " pb-6 border-b-4 border-button" : ""
                 }
               >
-                Find Salaries
+                Find Jobs
               </NavLink>
             </li>
           </ul>
@@ -70,7 +77,7 @@ const Navbar = () => {
               Sign Up
             </NavLink>
           )}
-          {isHomePage && showProfile && (
+          {showProfile && (
             <button
               onClick={handleClick}
               className="mr-4 bg-button text-white h-8 w-24 rounded-md"
@@ -81,20 +88,18 @@ const Navbar = () => {
 
           <ul className="flex">
             {showProfile && (
-              <div className="flex">
-                <NavLink to="/profile">
-                  <li className="w-5 h-5 mr-4">
-                    <img src={bell} alt="Bell" />
-                  </li>
-                </NavLink>
-                <li className="w-5 h-5 mr-10">
-                  <img src={user} alt="User" />
+              <div className="flex  justify-center ">
+                <li className="w-5 h-5 mr-3">
+                <img
+                  src={user}
+                  onClick={togglePopup}
+                  alt="User"
+                  className="cursor-pointer"
+                />
                 </li>
+                {isPopupOpen && <Popup userInfo={userData} />}
               </div>
             )}
-            <li className="mr-20">
-              <a href="">Employees/Post job</a>
-            </li>
           </ul>
         </div>
       </nav>
