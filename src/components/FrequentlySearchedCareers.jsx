@@ -8,8 +8,8 @@ const FrequentlySearchedCareers = () => {
  ];
 
  return (
-    <div className="container ml-10 flex justify-center mx-auto px-4  w-full">
-      <div className='w-[1000px]'>
+    <div className="  ml-5 flex justify-center  px-4 h-[30vh] py-96 w-full my-96 md:my-20">
+      <div className='w-full'>
 
       <h1 className="text-2xl font-bold mb-4">Frequently searched careers</h1>
       <div className="grid grid-cols-3 gap-4">

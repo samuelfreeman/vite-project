@@ -16,7 +16,8 @@ export default {
         "3xl": "0 4px 3px rgb(0 0 0 / 0.07)",
       },
       screens: {
-        phone: "390px",
+        phone: "100px",
+      
         tablet: "640px",
         // => @media (min-width: 640px) { ... }
 

@@ -16,7 +16,7 @@ if(!user){
   })
 
   return (
-    <div >
+    <div  >
       <Navbar />
 
       <Banner
@@ -47,11 +47,13 @@ if(!user){
         </div> 
       </div> */}
 
-      <div className="h-[95vh] mt-32 w-full">
+      <div className="h-[95vh] mt-32 w-full mb-52 md:mb-7 md:h-[20vh]">
         <Toppaying />
       </div>
+  <div className="mt-32 md:mt-4">
 
       <FrequentlySearchedCareers />
+  </div>
       <Footer />
     </div>
   );
