@@ -2,7 +2,7 @@ import React from "react";
 import Home from "./pages/Home";
 import SignUpPage from "./pages/signup";
 import LoginPage from "./pages/Login";
-import User from './components/User'
+
 import { Provider } from "react-redux"; // Import Provider from react-redux
 import store from "./api/store/store"; // Import your Redux store
 
