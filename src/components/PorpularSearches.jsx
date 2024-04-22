@@ -30,12 +30,12 @@ const PorpularSearches = () => {
       {!loading && (<div className=" flex justify-center w-full my-28 ">
 
         <div className="w-[700px]">
-          <div className="text-left border text-2xl rounded-md p-2">
+          <div className="text-left border text-2xl rounded-md p-2 w-[300px]  ">
             <h1>Popular searches</h1>
           </div>
-          <div className="grid grid-cols-1 phone:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+          <div className="grid grid-cols-1 phone:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4  ">
             {jobs.map((job) => (
-              <div key={job.id} className="border rounded-md p-2 text-lg">
+              <div key={job.id} className="border rounded-md p-2  sm:p-2 text-sm">
                 {job.title}
               </div>
             ))}

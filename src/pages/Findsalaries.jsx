@@ -47,10 +47,10 @@ if(!user){
         </div> 
       </div> */}
 
-      <div className="h-[95vh] mt-32 w-full mb-52 md:mb-7 md:h-[20vh]">
+      <div className="h-[90vh] mt-32 w-full   ">
         <Toppaying />
       </div>
-  <div className="mt-32 md:mt-4">
+  <div className=" md:mt-4">
 
       <FrequentlySearchedCareers />
   </div>

@@ -28,7 +28,7 @@ const Toppaying = () => {
 
   if (loading) {
     return (
-      <div className="w-full p-8 text-center h-[40vh] display flex justify-center items">
+      <div className="w-full p-8 text-center  display flex justify-center items">
         <Blocks
           height="80"
           width="80"
@@ -51,7 +51,7 @@ const Toppaying = () => {
   }
 
   return (
-    <div className=" px-7 md:px-20 ">
+    <div className=" px-7 md:px-40  h-full">
       <h1 className="text-4xl font-bold mb-8 text-center">
         Browse top paying jobs from industry
       </h1>
@@ -68,7 +68,7 @@ const Toppaying = () => {
           </button>
         ))}
       </div>
-      <div className="flex justify-center mt-4 md:my-10">
+      <div className="flex justify-center mt-4  md:my-10">
         <ul className="flex">
           {Array.from({ length: Math.ceil(jobs.length / jobsPerPage) }).map(
             (_, index) => (

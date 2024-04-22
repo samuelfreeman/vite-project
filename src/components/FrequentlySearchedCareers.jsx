@@ -8,11 +8,11 @@ const FrequentlySearchedCareers = () => {
  ];
 
  return (
-    <div className="  ml-5 flex justify-center  px-4 h-[30vh] py-96 w-full my-96 md:my-20">
-      <div className='w-full'>
+    <div className="  ml-5 flex justify-center  px-4 h-[30vh] pb-[500px] pt-[500px] md:pt-[50px]  w-full my-50 ">
+      <div className='w-full '>
 
       <h1 className="text-2xl font-bold mb-4">Frequently searched careers</h1>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 gap-4 ">
         {careers.map((column, index) => (
           <div key={index} className="col-span-1">
             {column.map((career, idx) => (
