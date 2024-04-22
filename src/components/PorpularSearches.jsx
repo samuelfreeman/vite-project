@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchJobs } from "../api/job/jobFxn";
-
+import { Blocks } from "react-loader-spinner";
 const PorpularSearches = () => {
   const dispatch = useDispatch();
   const { jobs, loading, error } = useSelector((state) => state.jobs);
-console.log(jobs)
+  console.log(jobs);
 
   useEffect(() => {
     // Fetch jobs only if they haven't been fetched before
@@ -14,14 +14,26 @@ console.log(jobs)
     }
   }, [dispatch, jobs]); // Add jobs to dependency array
 
-
   if (error) {
     return <div className=" w-[700px] h-[30vh]">Error: {error}</div>;
   }
 
   return (
-    <div className="ml-96 mt-20 w-[700px] h-[30vh] text-center ">
-      {loading && <div> Loading...</div>}
+    <div className="ml-96 mt-20 w-[700px] h-[30vh] text-center  ">
+      {loading && (
+        <div className="display flex justify-center items">
+          {" "}
+          <Blocks
+            height="80"
+            width="80"
+            color="#020058"
+            ariaLabel="blocks-loading"
+            wrapperStyle={{}}
+            wrapperClass="blocks-wrapper"
+            visible={true}
+          />
+        </div>
+      )}
       {!loading && (
         <div>
           <div className="text-left border text-2xl  rounded-md">

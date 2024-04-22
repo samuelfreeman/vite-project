@@ -7,6 +7,8 @@ import Footer from "../components/Footer";
 import { getSingleJob, applyJobs } from "../api/job/jobFxn";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Blocks } from "react-loader-spinner";
+// import { BoxesLoader } from "react-awesome-loaders";
 
 const Jobinfo = () => {
   const navigate = useNavigate();
@@ -19,9 +21,7 @@ const Jobinfo = () => {
     if (!user) {
       navigate("/signup");
     } else if (jobID) {
-      
-        dispatch(getSingleJob(jobID));
-      
+      dispatch(getSingleJob(jobID));
     }
   }, [dispatch, navigate, user, jobID]);
 
@@ -29,7 +29,17 @@ const Jobinfo = () => {
     return (
       <div>
         <Navbar />
-        <div>Loading...</div>
+        <div className="display flex justify-center items">
+          <Blocks
+            height="80"
+            width="80"
+            color="#020058"
+            ariaLabel="blocks-loading"
+            wrapperStyle={{}}
+            wrapperClass="blocks-wrapper"
+            visible={true}
+          />
+        </div>
       </div>
     );
   }

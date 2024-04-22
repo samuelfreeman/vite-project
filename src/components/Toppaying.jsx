@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom"; // Import useHistory hook for redirection
 import { fetchJobs } from "../api/job/jobFxn";
-
+import { Blocks } from "react-loader-spinner";
 const Toppaying = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate(); // Get history object for redirection
   const { jobs, loading, error } = useSelector((state) => state.jobs);
   console.log(jobs);
   useEffect(() => {
-    if (jobs.length ==0) {
+    if (jobs.length == 0) {
       dispatch(fetchJobs());
     }
   }, [dispatch, jobs]);
@@ -22,7 +22,19 @@ const Toppaying = () => {
   };
 
   if (loading) {
-    return <div className="w-[700px] p-8 text-center h-[40vh]">Loading...</div>;
+    return (
+      <div className="w-full p-8 text-center h-[40vh] display flex justify-center items">
+        <Blocks
+          height="80"
+          width="80"
+          color="#020058"
+          ariaLabel="blocks-loading"
+          wrapperStyle={{}}
+          wrapperClass="blocks-wrapper"
+          visible={true}
+        />
+      </div>
+    );
   }
 
   if (error) {
