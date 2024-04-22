@@ -9,10 +9,12 @@ const Popup = ({ userInfo }) => {
           <div className="">
             <p>
               {" "}
-              <span className="font-bold p-4">Name:</span>{userInfo.fullname}
+              <span className="font-bold p-4">Name:</span>
+              <span className="text-sm mt-4 pr-2 ">{userInfo.fullname}</span>
             </p>
             <p className="flex">
-              <span className="font-bold p-4">Email:</span><span className="text-sm mt-4 pr-2">{userInfo.email}</span>
+              <span className="font-bold p-4">Email:</span>
+              <span className="text-sm mt-4 pr-2">{userInfo.email}</span>
             </p>
             <NavLink to="/profile ">
               <p className="underline p-4">View application status</p>
