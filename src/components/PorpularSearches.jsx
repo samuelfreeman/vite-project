@@ -15,12 +15,12 @@ const PorpularSearches = () => {
   }, [dispatch, jobs]); // Add jobs to dependency array
 
   return (
-    <div className="mx-4 my-8 phone:mx-8">
+    <div className="mx-4 my-8 ">
       {loading && (
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center h-[20vh] mb-[330px] md:mb-[210px]">
           <Blocks
-            height={80}
-            width={80}
+            height={100}
+            width={100}
             color="#020058"
             ariaLabel="blocks-loading"
             visible={true}
